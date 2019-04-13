@@ -53,11 +53,11 @@
             margin-right: auto;
         }
         /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {background-color: black;}
+        .dropdown-content a:hover {background-color: #ddd;}
         /* Change color of dropdown links on hover */
         .dropdown:hover .dropdown-content {display: block;}
         /* Change the background color of the dropdown button when the dropdown content is shown */
-        .dropdown:hover .dropbtn {background-color: red;}
+        .dropdown:hover .dropbtn {background-color: black;}
     </style>
 
 
@@ -73,40 +73,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/dashboard/">Roll6</a>
+            <a class="navbar-brand" href="/dashboard/">Home</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <div class="dropdown">
-                    <button class="dropbtn">Hunter Games</button>
+                    <button class="dropbtn">Operations</button>
                     <div class="dropdown-content">
-                        <li><a href="/game/join"><span class="glyphicon glyphicon-plus"></span> Join Game</a></li>
+                        <li><a href="/game/join"><span ></span> queries</a></li>
                     </div>
                 </div>
             </ul>
             <ul class="nav navbar-nav">
                 <div class="dropdown">
-                    <button class="dropbtn">Keeper Games</button>
+                    <button class="dropbtn">Visualizations</button>
                     <div class="dropdown-content">
-                        <li><a href="/game/create"><span class="glyphicon glyphicon-plus"></span> Make Game</a></li>
+                        <li><a href="/game/create"><span ></span> Heatmap</a></li>
+                        <li><a href="/game/create"><span ></span> WordClouds</a></li>
                     </div>
                 </div>
             </ul>
             <ul class="nav navbar-nav">
                 <div class="dropdown">
-                    <button class="dropbtn">FAQ</button>
+                    <button class="dropbtn">About</button>
                     <div class="dropdown-content">
-                        <li><a href="/dashboard/motwfaq/">Monster of the Week</a></li>
-                        <li><a href="/dashboard/roll6faq/">Roll6</a></li>
-                    </div>
-                </div>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <div class="dropdown">
-                    <button class="dropbtn">Options</button>
-                    <div class="dropdown-content">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        <li><a href="/dashboard/motwfaq/">The Dataset</a></li>
+                        <li><a href="/dashboard/roll6faq/">The Team</a></li>
                     </div>
                 </div>
             </ul>
