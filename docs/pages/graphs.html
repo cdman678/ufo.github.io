@@ -9,6 +9,9 @@
     <!--For Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="javascript/RGraph/libraries/RGraph.common.core.js"></script>
+    <script src="javascript/RGraph/libraries/RGraph.bar.js"></script>
+    <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
 
     <style>
@@ -73,6 +76,15 @@
             right: 0;
         }
 
+        #p1 {
+            z-index: -2;
+            position: absolute;
+            width: 60%;
+            height: auto;
+            top: 30%;
+            left: 20%;
+        }
+
     </style>
 </head>
 
@@ -130,6 +142,60 @@
 </nav>
 
 <body style="background-color:floralwhite">
+
+<div class="container" id="p1">
+    <div class="panel panel-default">
+        <div class="panel-heading">Objectives</div>
+        <div class="panel-body" id="myDiv" style="height: 500px">
+            <canvas id="cvs" width="600" height="250">
+                [No canvas support]
+            </canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * This fetches the CSV file and shows the Bar chart
+     */
+    var csv = new RGraph.CSV('Top5States.csv', function (csv)
+    {
+        // Get the first column which becomes the labels
+        var labels  = csv.getCol(0),
+
+            // Get the second column which becomes the data
+            data    = csv.getCol(1),
+
+            // Get the number of rows in the CSV
+            numrows = csv.numrows,
+
+            // Get the number of columns in the CSV
+            numcols = csv.numcols;
+
+
+        // Create the chart
+        var bar = new RGraph.Bar({
+            id:'cvs',
+            data: data,
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                title: 'A chart using the CSV reader',
+                colors: ['#000'],
+                axes: false,
+                marginTop: 35,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                labelsAbove: true,
+                labelsAboveSpecific: labels,
+                labelsAboveSize: 14,
+                labelsAboveOffset: -35,
+                labelsAboveColor: 'white'
+            }
+        }).wave();
+    });
+</script>
 
 </body>
 
