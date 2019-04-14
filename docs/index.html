@@ -21,12 +21,12 @@
             z-index: -1;
         }
         .navbar-default {
-            color: whitesmoke;
+            color: floralwhite;
         }
         /* Dropdown Button*/
         .dropbtn {
             background-color: darkslategray;
-            color: whitesmoke;
+            color: floralwhite;
             padding: 16px;
             font-size: 16px;
             border: none;
@@ -61,15 +61,43 @@
 
         .header{
             z-index: 1;
+            position: fixed;
             text-align: center;
-            color: whitesmoke;
+            color: floralwhite;
+            left: 39%;
+            top: 1%
         }
 
-        .image{
+        .image1{
             z-index: 2;
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
+        }
+
+        .image2{
+            z-index: -5;
+            position: relative;
+            top:200px;
+            left: 0;
+        }
+
+        #p1 {
+            z-index: -2;
+            position: absolute;
+            width: 60%;
+            height: 80%;
+            top: 30%;
+            left: 20%;
+        }
+
+        #p2 {
+            z-index: -2;
+            position: absolute;
+            width: 60%;
+            height: 80%;
+            top: 70%;
+            left: 20%;
         }
 
     </style>
@@ -80,8 +108,12 @@
     <header style = "font-size: xx-large">By Cleaver Name Gang</header>
 </div>
 
-<div class="image">
-    <img src="pics/ufo-clipart-19.png" alt="cow abduction" height="161" width="400">
+<div class="image1">
+    <img src="pics/ufo-clipart-19.png" alt="cow abduction" height="161" width="400" >
+</div>
+
+<div class="image2">
+    <img src="pics/alien-clipart-13.png" alt="alien" height="450" width="300" >
 </div>
 
 <!-- Navigation Bar -->
@@ -127,7 +159,37 @@
     </div>
 </nav>
 
-<body style="background-color:whitesmoke"> </body>
+<body style="background-color:floralwhite">
+
+<div class="container" id="p1">
+    <div class="panel panel-default">
+        <div class="panel-heading">Objectives</div>
+        <div class="panel-body">
+            <li>Clean the dataset, removing all meaningless attributes and cleaning up the location attributes <br></li>
+            <li>Fill in a remote database from our local repository <br></li>
+            <li>Break the dataset into a normalized form <br></li>
+            <li>Run analysis on the dataset <br></li>
+            <li>Create Heatmap with the given locations<br></li>
+            <li>Create WordMaps for UFO descriptions</li>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="p2">
+    <div class="panel panel-default">
+        <div class="panel-heading">Dataset</div>
+        <div class="panel-body">
+            <li>Original dataset is from the National UFO Reporting Center and can be found <a href="http://www.nuforc.org/webreports.html">here</a> <br> </li>
+            <li>The Scrubbed dataset that we downloaded can be found <a href="https://github.com/planetsig/ufo-reports">here</a><br></li>
+            <li>We have removed the date uploaded attribute from this dataset<br></li>
+            <li>We crossed referenced the latitude and longitude for each data entry and updated the correct city, state, and country</li>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
 
 </html>
 
