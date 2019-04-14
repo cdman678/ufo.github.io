@@ -13,12 +13,11 @@
 
     <style>
 
-        {% block nav %}
         /* Color of Navbar */
         .navbar {
             padding-top: 100px;
             background-color: darkslategray;
-            z-index: -1;
+            z-index: 1;
         }
         .navbar-default {
             color: floralwhite;
@@ -43,7 +42,6 @@
             background-color: #f1f1f1;
             min-width: 150px;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            z-index: 1;
         }
         /* Links inside the dropdown */
         .dropdown-content a {
@@ -59,8 +57,8 @@
         /* Change the background color of the dropdown button when the dropdown content is shown */
         .dropdown:hover .dropbtn {background-color: black;}
 
-        .header{
-            z-index: 1;
+        .header1{
+            z-index: 2;
             position: fixed;
             text-align: center;
             color: floralwhite;
@@ -96,14 +94,23 @@
             position: absolute;
             width: 60%;
             height: 80%;
-            top: 70%;
+            top: 65%;
+            left: 20%;
+        }
+
+        #p3 {
+            z-index: -2;
+            position: absolute;
+            width: 60%;
+            height: 80%;
+            top: 95%;
             left: 20%;
         }
 
     </style>
 </head>
 
-<div class="header">
+<div class="header1">
     <header style = "font-size: xx-large">UFO Sightings</header>
     <header style = "font-size: xx-large">By Cleaver Name Gang</header>
 </div>
@@ -183,6 +190,19 @@
             <li>The Scrubbed dataset that we downloaded can be found <a href="https://github.com/planetsig/ufo-reports">here</a><br></li>
             <li>We have removed the date uploaded attribute from this dataset<br></li>
             <li>We crossed referenced the latitude and longitude for each data entry and updated the correct city, state, and country</li>
+
+        </div>
+    </div>
+</div>
+
+<div class="container" id="p3">
+    <div class="panel panel-default">
+        <div class="panel-heading">Tools</div>
+        <div class="panel-body">
+            <li>Python - Need elaboration <br> </li>
+            <li>MySQL - Need elaboration <br></li>
+            <li>HTML/Bootstrap - Need elaboration<br></li>
+            <li>Anything else we will use</li>
 
         </div>
     </div>
