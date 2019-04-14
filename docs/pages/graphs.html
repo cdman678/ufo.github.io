@@ -79,10 +79,10 @@
         #p1 {
             z-index: -2;
             position: absolute;
-            width: 60%;
+            width: auto;
             height: auto;
             top: 30%;
-            left: 20%;
+            text-align: center;
         }
 
     </style>
@@ -146,33 +146,31 @@
 <div class="container" id="p1">
     <div class="panel panel-default">
         <div class="panel-heading">Objectives</div>
-        <div class="panel-body" id="myDiv" style="height: 500px">
-            <canvas id="cvs" width="600" height="250">
+        <div class="panel-body" id="myDiv">
+
+            <canvas id="cvs" width="600" height="250" >
                 [No canvas support]
             </canvas>
+
         </div>
     </div>
 </div>
+
 
 <script>
     /**
      * This fetches the CSV file and shows the Bar chart
      */
-    var csv = new RGraph.CSV('Top5States.csv', function (csv)
+    var csv = new RGraph.CSV('../data/Top5States.csv', function (csv)
     {
         // Get the first column which becomes the labels
         var labels  = csv.getCol(0),
-
             // Get the second column which becomes the data
             data    = csv.getCol(1),
-
             // Get the number of rows in the CSV
             numrows = csv.numrows,
-
             // Get the number of columns in the CSV
             numcols = csv.numcols;
-
-
         // Create the chart
         var bar = new RGraph.Bar({
             id:'cvs',
@@ -180,7 +178,7 @@
             options: {
                 backgroundGridVlines: false,
                 backgroundGridBorder: false,
-                title: 'A chart using the CSV reader',
+                title: 'Top 5 states by sightings',
                 colors: ['#000'],
                 axes: false,
                 marginTop: 35,
@@ -191,7 +189,8 @@
                 labelsAboveSpecific: labels,
                 labelsAboveSize: 14,
                 labelsAboveOffset: -35,
-                labelsAboveColor: 'white'
+                labelsAboveColor: 'white',
+                xaxisLabels: labels
             }
         }).wave();
     });
