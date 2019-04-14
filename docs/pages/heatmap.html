@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <title>UFO Sightings</title>
@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
 
     <style>
-
+        body{
+            overflow: hidden;
+            background: url(../pics/space-bck.jpg)
+        }
         /* Color of Navbar */
         .navbar {
             padding-top: 100px;
@@ -72,6 +75,17 @@
             top: 0;
             right: 0;
         }
+        #p1 {
+            z-index: -2;
+            position: absolute;
+            width: 40%;
+            height: 80%;
+            top: 30%;
+            left: 30%;
+        }
+        .panel-body{
+            font-size: 20px
+        }
 
     </style>
 </head>
@@ -128,7 +142,18 @@
     </div>
 </nav>
 
-<body style="background-color:floralwhite"> </body>
+<body>
+
+<div class="container" id="p1">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3>HeatMap</h3>
+            <p><a href="viewmap.html">map</a> <br> </p>
+        </div>
+    </div>
+</div>
+
+</body>
 
 </html>
 
