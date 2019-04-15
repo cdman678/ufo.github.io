@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <title>Heatmaps</title>
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
-    <!-- async defer This is using anothony's key -->
-    <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARPOTKTvkswP0Sa5Qi06GD28v9gl_gtsM&libraries=visualization&callback=initMap"
-            async defer>
-    </script>
+
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -71,6 +67,12 @@
         }
         return commands;
     }
+</script>
+
+<!-- async defer This is using anothony's key -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARPOTKTvkswP0Sa5Qi06GD28v9gl_gtsM&libraries=visualization&callback=initMap"
+>
 </script>
 
 </body>
