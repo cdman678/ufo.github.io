@@ -50,14 +50,7 @@
         heatmap.setMap(map);
     }
 
-    var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {
-        // Get the first column which becomes the labels
-        var lat = csv.getCol(0);
-        // Get the second column which becomes the data
-        var long = csv.getCol(1);
-        // Get weight
-        var weight = csv.getCol(2);
-    });
+    var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {});
 
     function getPoints() {
         var cords = [];
