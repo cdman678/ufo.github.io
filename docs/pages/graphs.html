@@ -82,6 +82,9 @@
             width: auto;
             height: auto;
             top: 30%;
+
+        }
+        .panel-heading{
             text-align: center;
         }
 
@@ -145,10 +148,10 @@
 
 <div class="container" id="p1">
     <div class="panel panel-default">
-        <div class="panel-heading">Objectives</div>
+        <div class="panel-heading"><b>Top 5 states by sightings</b></div>
         <div class="panel-body" id="myDiv">
 
-            <canvas id="cvs" width="600" height="250" >
+            <canvas id="top5s" width="600" height="250" style="left: 4%;">
                 [No canvas support]
             </canvas>
 
@@ -173,12 +176,12 @@
             numcols = csv.numcols;
         // Create the chart
         var bar = new RGraph.Bar({
-            id:'cvs',
+            id:'top5s',
             data: data,
             options: {
                 backgroundGridVlines: false,
                 backgroundGridBorder: false,
-                title: 'Top 5 states by sightings',
+                title: '',
                 colors: ['#000'],
                 axes: false,
                 marginTop: 35,
