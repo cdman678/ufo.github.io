@@ -46,6 +46,7 @@
             data: getPoints(),
             map: map
         });
+        heatmap.setMap(map);
     }
 
     var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {
