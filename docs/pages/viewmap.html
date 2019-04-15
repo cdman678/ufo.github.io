@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Heatmaps</title>
+    <title>Heatmap</title>
 
     <!-- async defer This is using caleb's key -->
     <script defer
@@ -41,7 +41,7 @@
             center: {lat: 39.8283, lng: -98.5795},
             mapTypeId: 'terrain'
         });
-
+        sleep(10500).then(()=>{});
         heatmap = new google.maps.visualization.HeatmapLayer({
             data: getPoints(),
             map: map
