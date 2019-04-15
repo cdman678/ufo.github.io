@@ -7,7 +7,7 @@
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
     <!-- async defer -->
     <script defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARPOTKTvkswP0Sa5Qi06GD28v9gl_gtsM&libraries=visualization&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrw6NggE5EXrsNJ187Ckn02ZtG2e_k_mA&libraries=visualization&callback=initMap">
     </script>
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -103,7 +103,7 @@
     }
 
 
-    var csv = new RGraph.CSV('../data/test40k.csv', function (csv) {
+    var csv = new RGraph.CSV('../data/UScoords.csv', function (csv) {
         // Get the first column which becomes the labels
         var lat = csv.getCol(0);
         // Get the second column which becomes the data
