@@ -49,11 +49,13 @@
         });
     }
 
-    var csv = new RGraph.CSV('../data/UScoords.csv', function (csv) {
+    var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {
         // Get the first column which becomes the labels
         var lat = csv.getCol(0);
         // Get the second column which becomes the data
         var long = csv.getCol(1);
+        // Get weight
+        var weight = csv.getCol(2);
     })
 
     function getPoints() {
@@ -63,7 +65,9 @@
             cords[j] = [];
             cords[j].push(csv.data[j][0]);
             cords[j].push(csv.data[j][1]);
-            commands.push(new google.maps.LatLng(cords[j][0], cords[j][1]));
+            cords[j].push(csv.data[j][2]);
+            commands.push({location: new google.maps.LatLng(cords[j][0], cords[j][1]), weight: cords[j][2]})
+            //commands.push(new google.maps.LatLng(cords[j][0], cords[j][1]));
         }
         return commands;
     }
