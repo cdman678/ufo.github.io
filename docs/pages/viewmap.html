@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <title>Heatmaps</title>
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
+    <!-- async defer -->
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOEMUEwLlczFLECowK_5WXpampqx3Xt4E&libraries=visualization&callback=initMap"
+            defer>
+    </script>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -16,28 +21,6 @@
             height: 100%;
             margin: 0;
             padding: 0;
-        }
-        #floating-panel {
-            position: absolute;
-            top: 10px;
-            left: 25%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto','sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-        }
-        #floating-panel {
-            background-color: #fff;
-            border: 1px solid #999;
-            left: 25%;
-            padding: 5px;
-            position: absolute;
-            top: 10px;
-            z-index: 5;
         }
     </style>
 </head>
@@ -66,66 +49,25 @@
         });
     }
 
-    function toggleHeatmap() {
-        heatmap.setMap(heatmap.getMap() ? null : map);
-    }
-
-    function changeGradient() {
-        var gradient = [
-            'rgba(0, 255, 255, 0)',
-            'rgba(0, 255, 255, 1)',
-            'rgba(0, 191, 255, 1)',
-            'rgba(0, 127, 255, 1)',
-            'rgba(0, 63, 255, 1)',
-            'rgba(0, 0, 255, 1)',
-            'rgba(0, 0, 223, 1)',
-            'rgba(0, 0, 191, 1)',
-            'rgba(0, 0, 159, 1)',
-            'rgba(0, 0, 127, 1)',
-            'rgba(63, 0, 91, 1)',
-            'rgba(127, 0, 63, 1)',
-            'rgba(191, 0, 31, 1)',
-            'rgba(255, 0, 0, 1)'
-        ]
-        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
-    }
-
-    function changeRadius() {
-        heatmap.set('radius', heatmap.get('radius') ? null : 20);
-    }
-
-    function changeOpacity() {
-        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
-    }
-
-
-    var csv =new RGraph.CSV('../data/test40k.csv', function (csv) {
+    var csv = new RGraph.CSV('../data/UScoords.csv', function (csv) {
         // Get the first column which becomes the labels
         var lat = csv.getCol(0);
         // Get the second column which becomes the data
-        var long = csv.getCol(1);})
+        var long = csv.getCol(1);
+    })
 
-    function convertCSV() {
+    function getPoints() {
         var cords = [];
+        var commands = [];
         for (var j = 0; j < csv.data.length; j++) {
             cords[j] = [];
             cords[j].push(csv.data[j][0]);
             cords[j].push(csv.data[j][1]);
-        }
-        return cords;
-    }
-
-    function getPoints(){
-        var cords = convertCSV();
-        var commands = [];
-        for(var i=0; i<cords.length; i++){
-            commands.push(new google.maps.LatLng(cords[i][0],cords[i][1]));
+            commands.push(new google.maps.LatLng(cords[j][0], cords[j][1]));
         }
         return commands;
     }
 </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARPOTKTvkswP0Sa5Qi06GD28v9gl_gtsM&libraries=visualization&callback=initMap">
-</script>
+
 </body>
 </html>
