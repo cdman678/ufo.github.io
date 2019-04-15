@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <title>Heatmaps</title>
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
-    <!-- async defer -->
-    <script defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrw6NggE5EXrsNJ187Ckn02ZtG2e_k_mA&libraries=visualization&callback=initMap">
-    </script>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -128,6 +124,11 @@
         }
         return commands;
     }
+</script>
+
+<!-- async defer -->
+<script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrw6NggE5EXrsNJ187Ckn02ZtG2e_k_mA&libraries=visualization&callback=initMap">
 </script>
 
 </body>
