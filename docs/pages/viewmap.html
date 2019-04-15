@@ -41,8 +41,7 @@
             center: {lat: 39.8283, lng: -98.5795},
             mapTypeId: 'terrain'
         });
-        sleep(10500).then(() => {
-        });
+
         heatmap = new google.maps.visualization.HeatmapLayer({
             data: getPoints(),
             map: map
@@ -52,10 +51,12 @@
 
     var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {});
 
+
+
     function getPoints() {
         var cords = [];
         var commands = [];
-        sleep(10500).then(() => {});
+        sleep(30000).then(() => {});
         for (var j = 0; j < csv.data.length; j++) {
             cords[j] = [];
             cords[j].push(csv.data[j][0]);
@@ -66,6 +67,7 @@
         }
         return commands;
     }
+
 </script>
 
 </body>
