@@ -32,9 +32,9 @@
 <div id="map"></div>
 <script>
 
-    // This example requires the Visualization library. Include the libraries=visualization
-    // parameter when you first load the API. For example:
-    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     var map, heatmap;
 
@@ -64,6 +64,7 @@
     function getPoints() {
         var cords = [];
         var commands = [];
+        sleep(10000).then(()=>{});
         for (var j = 0; j < csv.data.length; j++) {
             cords[j] = [];
             cords[j].push(csv.data[j][0]);
