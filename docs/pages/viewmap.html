@@ -33,7 +33,7 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    var map, heatmap;
+        var map, heatmap;
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -41,7 +41,8 @@
             center: {lat: 39.8283, lng: -98.5795},
             mapTypeId: 'terrain'
         });
-        sleep(10500).then(()=>{});
+        sleep(10500).then(() => {
+        });
         heatmap = new google.maps.visualization.HeatmapLayer({
             data: getPoints(),
             map: map
@@ -61,7 +62,7 @@
     function getPoints() {
         var cords = [];
         var commands = [];
-        sleep(10500).then(()=>{});
+        sleep(10500).then(() => {});
         for (var j = 0; j < csv.data.length; j++) {
             cords[j] = [];
             cords[j].push(csv.data[j][0]);
