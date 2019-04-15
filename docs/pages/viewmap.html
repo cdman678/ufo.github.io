@@ -99,11 +99,12 @@
     }
 
 
-    var csv =new RGraph.CSV('../data/UScoords.csv', function (csv) {
+    var csv = new RGraph.CSV('../data/UScoords.csv', function (csv) {
         // Get the first column which becomes the labels
         var lat = csv.getCol(0);
         // Get the second column which becomes the data
-        var long = csv.getCol(1);})
+        var long = csv.getCol(1);
+    })
 
     function convertCSV() {
         var cords = [];
@@ -115,11 +116,11 @@
         return cords;
     }
 
-    function getPoints(){
+    function getPoints() {
         var cords = convertCSV();
         var commands = [];
-        for(var i=0; i<cords.length; i++){
-            commands.push(new google.maps.LatLng(cords[i][0],cords[i][1]));
+        for (var i = 0; i < cords.length; i++) {
+            commands.push(new google.maps.LatLng(cords[i][0], cords[i][1]));
         }
         return commands;
     }
