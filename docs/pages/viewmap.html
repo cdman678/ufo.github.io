@@ -12,6 +12,49 @@
 
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js" type="text/javascript"> </script>
 
+    <script>
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        var map, heatmap;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: {lat: 39.8283, lng: -98.5795},
+                mapTypeId: 'terrain'
+            });
+
+            heatmap = new google.maps.visualization.HeatmapLayer({
+                data: getPoints(),
+                map: map
+            });
+            heatmap.setMap(map);
+        }
+
+        var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {});
+
+
+
+        function getPoints() {
+            var cords = [];
+            var commands = [];
+            sleep(30000).then(() => {});
+            for (var j = 0; j < csv.data.length; j++) {
+                cords[j] = [];
+                cords[j].push(csv.data[j][0]);
+                cords[j].push(csv.data[j][1]);
+                cords[j].push(csv.data[j][2]);
+                commands.push({location: new google.maps.LatLng(cords[j][0], cords[j][1]), weight: cords[j][2]})
+                //commands.push(new google.maps.LatLng(cords[j][0], cords[j][1]));
+            }
+            return commands;
+        }
+
+    </script>
+
     <style>
         #map {
             height: 100%;
@@ -22,53 +65,12 @@
             padding: 0;
         }
     </style>
+
 </head>
 
 <body>
 
 <div id="map"></div>
-<script>
-
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-        var map, heatmap;
-
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 5,
-            center: {lat: 39.8283, lng: -98.5795},
-            mapTypeId: 'terrain'
-        });
-
-        heatmap = new google.maps.visualization.HeatmapLayer({
-            data: getPoints(),
-            map: map
-        });
-        heatmap.setMap(map);
-    }
-
-    var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {});
-
-
-
-    function getPoints() {
-        var cords = [];
-        var commands = [];
-        sleep(30000).then(() => {});
-        for (var j = 0; j < csv.data.length; j++) {
-            cords[j] = [];
-            cords[j].push(csv.data[j][0]);
-            cords[j].push(csv.data[j][1]);
-            cords[j].push(csv.data[j][2]);
-            commands.push({location: new google.maps.LatLng(cords[j][0], cords[j][1]), weight: cords[j][2]})
-            //commands.push(new google.maps.LatLng(cords[j][0], cords[j][1]));
-        }
-        return commands;
-    }
-
-</script>
 
 </body>
 
