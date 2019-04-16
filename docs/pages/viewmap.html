@@ -3,33 +3,33 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Heatmaps</title>
+    <title>Heatmap</title>
 
     <!-- async defer This is using caleb's key -->
     <script defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdB87i_oB26YONYbfPGhm4wAlJk3jYO94&libraries=visualization&callback=loadcsv" type="text/javascript">
     </script>
 
-    <script src="javascript/RGraph/libraries/RGraph.common.csv.js"> </script>
+    <script src="javascript/RGraph/libraries/RGraph.common.csv.js" type="text/javascript"> </script>
+
 
     <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
         #map {
             height: 100%;
         }
-        /* Optional: Makes the sample page fill the window. */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
     </style>
+
 </head>
 
 <body>
 
 <div id="map"></div>
+
 <script>
 
     function sleep(ms) {
@@ -74,7 +74,6 @@
         return commands;
     }
 </script>
-
 </body>
 
 </html>
