@@ -20,7 +20,7 @@
         .navbar {
             padding-top: 100px;
             background-color: darkslategray;
-            z-index: 1;
+            z-index: 3;
         }
         .navbar-default {
             color: floralwhite;
@@ -61,7 +61,7 @@
         .dropdown:hover .dropbtn {background-color: black;}
 
         .header1{
-            z-index: 3;
+            z-index: 5;
             position: fixed;
             text-align: center;
             color: floralwhite;
@@ -70,7 +70,7 @@
         }
 
         .image1{
-            z-index: 2;
+            z-index: 4;
             position: fixed;
             top: 0;
             right: 0;
@@ -95,7 +95,7 @@
         }
 
         #p1 {
-            z-index: -2;
+            z-index: 1;
             position: absolute;
             width: 60%;
             height: 80%;
@@ -104,7 +104,7 @@
         }
 
         #p2 {
-            z-index: -2;
+            z-index: 1;
             position: absolute;
             width: 60%;
             height: 80%;
@@ -113,7 +113,7 @@
         }
 
         #p3 {
-            z-index: -2;
+            z-index: 1;
             position: absolute;
             width: 60%;
             height: 80%;
@@ -203,12 +203,14 @@
     </div>
 </div>
 
+
+
 <div class="container" id="p2">
     <div class="panel panel-default">
         <div class="panel-heading">Dataset</div>
         <div class="panel-body">
             <li>Original dataset is from the National UFO Reporting Center and can be found <a href="http://www.nuforc.org/webreports.html">here</a> <br> </li>
-            <li>The Scrubbed dataset that we downloaded can be found <a href="https://github.com/planetsig/ufo-reports">here</a><br></li>
+            <li>The Scrubbed dataset that we downloaded can be found <a href="https://github.com/planetsig/ufo-reports">here</a> <br></li>
             <li>We have removed the date uploaded attribute from this dataset<br></li>
             <li>We crossed referenced the latitude and longitude for each data entry and updated the correct city, state, and country</li>
 
