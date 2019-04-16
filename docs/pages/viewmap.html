@@ -7,7 +7,7 @@
 
     <!-- async defer This is using caleb's key -->
     <script defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdB87i_oB26YONYbfPGhm4wAlJk3jYO94&libraries=visualization&callback=initMap" type="text/javascript">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdB87i_oB26YONYbfPGhm4wAlJk3jYO94&libraries=visualization&callback=loadcsv" type="text/javascript">
     </script>
 
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"> </script>
@@ -38,7 +38,7 @@
 
     var map, heatmap;
 
-    function initMap() {
+    function initMap(data) {
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 5,
             center: {lat: 39.8283, lng: -98.5795},
@@ -46,21 +46,20 @@
         });
 
         heatmap = new google.maps.visualization.HeatmapLayer({
-            data: getPoints(),
+            data: getPoints(data),
             map: map
         });
     }
 
-    var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function (csv) {
-        // Get the first column which becomes the labels
-        var lat = csv.getCol(0);
-        // Get the second column which becomes the data
-        var long = csv.getCol(1);
-        // Get weight
-        var weight = csv.getCol(2);
-    });
+    function loadcsv() {
+        var csv = new RGraph.CSV('../data/condesnedcountlong.csv', function(csv){
+            initMap(csv)
+        } );
 
-    function getPoints() {
+    }
+
+
+    function getPoints(csv) {
         var cords = [];
         var commands = [];
         sleep(10000).then(()=>{});
