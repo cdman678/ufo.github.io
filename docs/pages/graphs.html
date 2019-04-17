@@ -75,14 +75,26 @@
             top: 0;
             right: 0;
         }
+        .flex{
+            display: flex;
+            flex-wrap: nowrap;
+            margin-top: 12%;
+        }
+
 
         #p1 {
             z-index: -2;
-            position: absolute;
+
             width: auto;
             height: auto;
-            top: 30%;
 
+
+        }
+        #p2 {
+            z-index: -2;
+
+            width: auto;
+            height: auto;
         }
         .panel-heading{
             text-align: center;
@@ -146,19 +158,33 @@
 
 <body style="background-color:floralwhite">
 
-<div class="container" id="p1">
-    <div class="panel panel-default">
-        <div class="panel-heading"><b>Top 5 States by Sightings</b></div>
-        <div class="panel-body" id="myDiv">
+<div class="flex">
+    <div class="container" id="p1">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Top 5 States by Sightings</b></div>
+            <div class="panel-body">
 
-            <canvas id="top5s" width="600" height="250" style="left: 4%;">
-                [No canvas support]
-            </canvas>
+                <canvas id="top5s" width="600" height="250" style="left: 4%;">
+                    [No canvas support]
+                </canvas>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="p2">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Top 5 States by Sightings</b></div>
+            <div class="panel-body" >
+
+                <canvas id="top5c" width="600" height="250" style="left: 4%;">
+                    [No canvas support]
+                </canvas>
+
+            </div>
         </div>
     </div>
 </div>
-
 
 <script>
     /**
@@ -199,20 +225,6 @@
     });
 </script>
 
-<div class="container" id="p2">
-    <div class="panel panel-default">
-        <div class="panel-heading"><b>Top 5 Cities by Sightings</b></div>
-        <div class="panel-body" id="myDiv">
-
-            <canvas id="top5s" width="600" height="250" style="left: 4%;">
-                [No canvas support]
-            </canvas>
-
-        </div>
-    </div>
-</div>
-
-
 <script>
     /**
      * This fetches the CSV file and shows the Bar chart
@@ -229,7 +241,7 @@
             numcols = csv.numcols;
         // Create the chart
         var bar = new RGraph.Bar({
-            id:'top5s',
+            id:'top5c',
             data: data,
             options: {
                 backgroundGridVlines: false,
