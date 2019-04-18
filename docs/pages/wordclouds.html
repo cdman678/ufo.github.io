@@ -75,11 +75,6 @@
             top: 0;
             right: 0;
         }
-        .flex1{
-            display: flex;
-            flex-wrap: nowrap;
-            margin-top: 20%;
-        }
         #myChart1 {
             height:100%;
             width:100%;
@@ -100,6 +95,14 @@
             width: 60%;
             height: 80%;
             top: 30%;
+            left: 20%;
+        }
+        #p2 {
+            z-index: -2;
+            position: absolute;
+            width: 60%;
+            height: 80%;
+            top: 110%;
             left: 20%;
         }
     </style>
@@ -161,27 +164,33 @@
 
 <body style="background-color:floralwhite">
 
-<div class="flex1">
-    <div>
 
-        <div class="container" id="p1">
-            <div class="panel panel-default">
-                <div class="panel-heading">UFO Shape</div>
-                <div class="panel-body">
-                    <div id="myChart1"></div>
-                </div>
+    <div class="container" id="p1">
+        <div class="panel panel-default">
+            <div class="panel-heading">UFO Shape</div>
+            <div class="panel-body">
+                <div id="myChart1"></div>
             </div>
         </div>
-
     </div>
-</div>
+
+    <div class="container" id="p2">
+        <div class="panel panel-default">
+            <div class="panel-heading">Sighting Description</div>
+            <div class="panel-body">
+                <div id="myChart2"></div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 
 <script>
-    window.onload=loadcsv();
+    window.onload=loadcsv1();
+    window.onload=loadcsv2();
 
-    function loadcsv() {
+    function loadcsv1() {
         var csv = new RGraph.CSV('../data/shapes.txt', function(csv){
             zingchart.render({
                 id: 'myChart1',
@@ -190,7 +199,17 @@
                 width: '100%'
             });
         } );
+    }
 
+    function loadcsv2() {
+        var csv = new RGraph.CSV('../data/descriptions.txt', function(csv){
+            zingchart.render({
+                id: 'myChart2',
+                data: make_config(csv),
+                height: 400,
+                width: '100%'
+            });
+        } );
     }
 
     function make_config(csv) {
@@ -203,6 +222,11 @@
             backgroundColor: 'transparent',
             options: {
                 text: string,
+                ignore: ['&quot','this','10','two','off','sky&44','we','We','one','three','for','four','when','the','into',
+                'as','out','by','not','near','or','no','but','it','It','be','had','away','30','Two','what','other','an','me','our','Our',
+                'have','The','in','to','of','&#44','and','Was','just','lights&#44','sky&#44','is','at','on','My','went','15','all','Three','20','PD','than',
+                'were','all','after','&amp','Note','before','my','like','saw','about','looking','looked','going','back','that','THE','same','see','was','them'],
+                minItems: 50,
                 rotate: true,
                 colorType: 'palette',
                 palette: ['#D32F2F', '#5D4037', '#1976D2', '#E53935', '#6D4C41', '#1E88E5', '#F44336', '#795548', '#2196F3', '#EF5350', '#8D6E63', '#42A5F5'],
