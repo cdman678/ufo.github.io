@@ -13,7 +13,7 @@
     <script src="javascript/RGraph/libraries/RGraph.bar.js"></script>
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
-
+    <!-- Highlight.js for SQL highlighting -->
     <link rel="stylesheet"
           href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/styles/vs.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/highlight.min.js"></script>
@@ -82,6 +82,7 @@
         .flex{
             display: flex;
             flex-wrap: wrap;
+            flex-direction: row;
             margin-top: 12%;
         }
         .container {
@@ -244,7 +245,6 @@ LIMIT 5;
                 </canvas>
 
                 <br>
-
                 <div class="collapse" id="highlight4">
                     <pre><code>
 SELECT shape, count(shape)

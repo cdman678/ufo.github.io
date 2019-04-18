@@ -14,6 +14,14 @@
     <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
     ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>  <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js" type="text/javascript"> </script>
+    <!-- Highlight.js for SQL highlighting -->
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/styles/vs.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/highlight.min.js"></script>
+
+
+
+
     <style>
 
         /* Color of Navbar */
@@ -89,22 +97,13 @@
         .panel-heading{
             font-size: 30px
         }
-        #p1 {
-            z-index: -2;
-            position: absolute;
-            width: 60%;
-            height: 80%;
-            top: 30%;
-            left: 20%;
+
+        .flex{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 12%;
         }
-        #p2 {
-            z-index: -2;
-            position: absolute;
-            width: 60%;
-            height: 80%;
-            top: 110%;
-            left: 20%;
-        }
+
     </style>
 
 </head>
@@ -164,12 +163,25 @@
 
 <body style="background-color:floralwhite">
 
+<div class="flex">
 
     <div class="container" id="p1">
         <div class="panel panel-default">
             <div class="panel-heading">UFO Shape</div>
             <div class="panel-body">
                 <div id="myChart1"></div>
+
+                <br>
+                <div class="collapse" id="highlight1">
+                    The Query used to generate this word cloud is:
+                    <pre><code>
+SELECT shape
+FROM description;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight1">Show Query</button>
+
             </div>
         </div>
     </div>
@@ -179,12 +191,28 @@
             <div class="panel-heading">Sighting Description</div>
             <div class="panel-body">
                 <div id="myChart2"></div>
+
+                <br>
+                <div class="collapse" id="highlight2">
+                    The Query used to generate this word cloud is:
+                    <pre><code>
+SELECT description
+FROM description;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight2">Show Query</button>
             </div>
+
+
         </div>
     </div>
 
+</div>
 
 </body>
+
+<script>hljs.initHighlightingOnLoad();</script>
 
 <script>
     window.onload=loadcsv1();
