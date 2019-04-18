@@ -77,16 +77,10 @@
         }
         .flex{
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             margin-top: 12%;
         }
-        #p1 {
-            z-index: -2;
-
-            width: auto;
-            height: auto;
-        }
-        #p2 {
+        .container {
             z-index: -2;
 
             width: auto;
@@ -155,7 +149,7 @@
 <body style="background-color:floralwhite">
 
 <div class="flex">
-    <div class="container" id="p1">
+    <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading"><b>Top 5 States by Sightings</b></div>
             <div class="panel-body">
@@ -168,7 +162,7 @@
         </div>
     </div>
 
-    <div class="container" id="p2">
+    <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading"><b>Top 5 Cities by Sightings</b></div>
             <div class="panel-body" >
@@ -180,6 +174,33 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Top 5 countries that are not the US</b></div>
+            <div class="panel-body" >
+
+                <canvas id="top5nonus" width="600" height="250" style="left: 4%;">
+                    [No canvas support]
+                </canvas>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Top 5 reported object shapes</b></div>
+            <div class="panel-body" >
+
+                <canvas id="top5shapes" width="600" height="250" style="left: 4%;">
+                    [No canvas support]
+                </canvas>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -191,12 +212,7 @@
         // Get the first column which becomes the labels
         var labels  = csv.getCol(0),
             // Get the second column which becomes the data
-            data    = csv.getCol(1),
-            // Get the number of rows in the CSV
-            numrows = csv.numrows,
-            // Get the number of columns in the CSV
-            numcols = csv.numcols;
-        // Create the chart
+            data    = csv.getCol(1);
         var bar = new RGraph.Bar({
             id:'top5s',
             data: data,
@@ -229,12 +245,7 @@
         // Get the first column which becomes the labels
         var labels  = csv.getCol(0),
             // Get the second column which becomes the data
-            data    = csv.getCol(2),
-            // Get the number of rows in the CSV
-            numrows = csv.numrows,
-            // Get the number of columns in the CSV
-            numcols = csv.numcols;
-        // Create the chart
+            data    = csv.getCol(2);
         var bar = new RGraph.Bar({
             id:'top5c',
             data: data,
@@ -257,7 +268,74 @@
         }).wave();
     });
 </script>
-    
+
+<script>
+    /**
+     * This fetches the CSV file and shows the Bar chart
+     */
+    var csv = new RGraph.CSV('../data/top5nonus.csv', function (csv)
+    {
+        // Get the first column which becomes the labels
+        var labels  = csv.getCol(0),
+            // Get the second column which becomes the data
+            data    = csv.getCol(1);
+        var bar = new RGraph.Bar({
+            id:'top5nonus',
+            data: data,
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                title: '',
+                colors: ['#2f2f4f'],
+                axes: false,
+                marginTop: 35,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                labelsAbove: false,
+                labelsAboveSize: 14,
+                labelsAboveOffset: -35,
+                labelsAboveColor: 'white',
+                xaxisLabels: labels
+            }
+        }).wave();
+    });
+</script>
+
+<script>
+    /**
+     * This fetches the CSV file and shows the Bar chart
+     */
+    var csv = new RGraph.CSV('../data/top5shapes.csv', function (csv)
+    {
+        // Get the first column which becomes the labels
+        var labels  = csv.getCol(0),
+            // Get the second column which becomes the data
+            data    = csv.getCol(1);
+        var bar = new RGraph.Bar({
+            id:'top5shapes',
+            data: data,
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                title: '',
+                colors: ['#2f2f4f'],
+                axes: false,
+                marginTop: 35,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                labelsAbove: true,
+                labelsAboveSize: 14,
+                labelsAboveOffset: -35,
+                labelsAboveColor: 'white',
+                xaxisLabels: labels
+            }
+        }).wave();
+    });
+</script>
+
+
 </body>
 
 </html>
