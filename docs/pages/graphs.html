@@ -14,6 +14,10 @@
     <script src="javascript/RGraph/libraries/RGraph.common.csv.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
 
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/styles/vs.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/highlight.min.js"></script>
+
     <style>
 
         /* Color of Navbar */
@@ -81,8 +85,6 @@
             margin-top: 12%;
         }
         .container {
-            z-index: -2;
-
             width: auto;
             height: auto;
         }
@@ -149,6 +151,7 @@
 <body style="background-color:floralwhite">
 
 <div class="flex">
+
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading"><b>Top 5 States by Sightings</b></div>
@@ -157,6 +160,20 @@
                 <canvas id="top5s" width="600" height="250" style="left: 4%;">
                     [No canvas support]
                 </canvas>
+                <br>
+
+                <div class="collapse" id="highlight1">
+                    <pre><code>
+SELECT state,count(state)
+FROM location l, sighting s
+WHERE s.longitude = l.Longitude AND s.latitude=l.Latitude AND l.country ='US' AND l.state !=''
+GROUP BY state
+ORDER BY count(state) DESC
+LIMIT 5;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight1">Show Query</button>
 
             </div>
         </div>
@@ -170,6 +187,20 @@
                 <canvas id="top5c" width="600" height="250" style="left: 4%;">
                     [No canvas support]
                 </canvas>
+                <br>
+
+                <div class="collapse" id="highlight2">
+                    <pre><code>
+SELECT city,state,count(city)
+FROM location l, sighting s
+WHERE s.longitude = l.Longitude AND s.latitude=l.Latitude AND l.country ='US'
+GROUP BY city
+ORDER BY count(city) DESC
+LIMIT 5;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight2">Show Query</button>
 
             </div>
         </div>
@@ -184,6 +215,21 @@
                     [No canvas support]
                 </canvas>
 
+                <br>
+
+                <div class="collapse" id="highlight3">
+                    <pre><code>
+SELECT country, count(country)
+FROM sighting s , location l
+WHERE l.Latitude = s.latitude and l.Longitude = s.longitude and country!='US'
+GROUP BY country
+ORDER BY count(country) DESC
+LIMIT 5;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight3">Show Query</button>
+
             </div>
         </div>
     </div>
@@ -197,11 +243,30 @@
                     [No canvas support]
                 </canvas>
 
+                <br>
+
+                <div class="collapse" id="highlight4">
+                    <pre><code>
+SELECT shape, count(shape)
+FROM description
+GROUP BY shape
+ORDER BY count(shape) DESC
+LIMIT 5;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight4">Show Query</button>
+
+
+
+
             </div>
         </div>
     </div>
 
 </div>
+
+<script>hljs.initHighlightingOnLoad();</script>
 
 <script>
     /**
