@@ -10,9 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>  <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
+    <script src="javascript/RGraph/libraries/RGraph.common.csv.js" type="text/javascript"> </script>
+    <!-- Highlight.js for SQL highlighting -->
     <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/styles/vs.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/highlight.min.js"></script>
+
+
+
 
     <style>
 
@@ -75,8 +83,29 @@
             top: 0;
             right: 0;
         }
+        #myChart1 {
+            height:100%;
+            width:100%;
+            min-height:150px;
+        }
+        .zc-ref {
+            display:none;
+        }
+        .panel{
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        .panel-heading{
+            font-size: 30px
+        }
+
+        .flex{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 12%;
+        }
 
     </style>
+
 </head>
 
 <div class="header1">
@@ -105,7 +134,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Operations</button>
                     <div class="dropdown-content">
-                        <li><a class = "active" href="queries.html"><span ></span> Queries</a></li>
+                        <li><a href="queries.html"><span ></span> Queries</a></li>
                     </div>
                 </div>
             </ul>
@@ -114,7 +143,7 @@
                     <button class="dropbtn">Visualizations</button>
                     <div class="dropdown-content">
                         <li><a href="heatmap.html"><span ></span> Heatmap</a></li>
-                        <li><a href="wordclouds.html" ><span ></span> WordClouds</a></li>
+                        <li><a class = "active" href="wordclouds.html" ><span ></span> WordClouds</a></li>
                         <li><a href="graphs.html"><span ></span>Graphs</a></li>
                     </div>
                 </div>
@@ -132,15 +161,107 @@
     </div>
 </nav>
 
-<body style="background-color:floralwhite"> </body>
+<body style="background-color:floralwhite">
 
-<div style="padding-top:20%">
-    <h2> This is where we will include images of our queries and either explain what we used them for or show their output</h2>
-</div>
+<div class="flex">
+
+    <div class="container" id="p1">
+        <div class="panel panel-default">
+            <div class="panel-heading">Insert Query</div>
+            <div class="panel-body">
+                <br>
+                <div class="collapse" id="highlight1">
+                    The query used to insert a new sighting into the Sighting tables is:
+                    <pre><code>
+INSERT INTO Sighting
+VALUES (80100, 2019-04-01 21:00, 60, 1 minute, 30.2672, -97.7431);
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight1">Show Query</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="p2">
+        <div class="panel panel-default">
+            <div class="panel-heading">Update Description Query</div>
+            <div class="panel-body">
+                <br>
+                <div class="collapse" id="highlight2">
+                    The query used to update the description values for SID=80100 in the Description tables is:
+                    <pre><code>
+UPDATE Description
+SET Shape='star', Sighting_description='object looked like a shooting star crossing the sky'
+WHERE SID=80100;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight2">Show Query</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="p3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Update Location Query</div>
+            <div class="panel-body">
+                <br>
+                <div class="collapse" id="highlight3">
+                    The query used to update the location values for SID=80100 from the Location tables is:
+                    <pre><code>
+UPDATE Location
+SET latitude=30.2672, longitude=-97.7431, City='Austin', State='TX', Country='us'
+WHERE SID=80100;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight3">Show Query</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="p4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Delete Query</div>
+            <div class="panel-body">
+                <br>
+                <div class="collapse" id="highlight4">
+                    The query used to delete the sighting with SID=80100 from the Sighting tables is:
+                    <pre><code>
+DELETE FROM Sighting
+WHERE SID=80100;
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight4">Show Query</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="p5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Placeholder Query</div>
+            <div class="panel-body">
+                <br>
+                <div class="collapse" id="highlight5">
+                    The query used to look up something:
+                    <pre><code>
+QUERY HERE
+                    </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight5">Show Query</button>
+
+            </div>
+        </div>
+    </div>
+
+</body>
 
 </html>
-
-
-
-
 
