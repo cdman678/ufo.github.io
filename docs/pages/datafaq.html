@@ -72,49 +72,7 @@
             top: 0;
             right: 0;
         }
-        /*Code for the GitHub Button*/
-        .button {
-            border-radius: 4px;
-            background-color: #2f2f4f;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 28px;
-            padding: 20px;
-            width: 200px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .button span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
 
-        .button span:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .button:hover span {
-            padding-right: 25px;
-        }
-
-        .button:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
-        #github{
-            position: fixed;
-            right: .5%;
-            top: 22%;
-        }
 
 
     </style>
@@ -175,9 +133,7 @@
 
 <body style="background-color:floralwhite">
 
-<div style="top: 50% ; left: 40%">
-    <button class="button"  id="github" onclick="link_GitHub()"><span>GitHub</span></button>
-</div>
+
 
 <div style="padding-top:20%">
     <h2> This is where we will put the diagrams and maybe show normalization as well</h2>
@@ -185,12 +141,7 @@
 
 </body>
 
-<script>
-    function link_GitHub()
-    {
-        location.href = "https://github.com/cdman678/ufo.github.io";
-    }
-</script>
+
 
 </html>
 
