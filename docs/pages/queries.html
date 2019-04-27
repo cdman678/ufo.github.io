@@ -166,16 +166,11 @@
             <div class="panel-heading">Insert New Sighting Query</div>
             <div class="panel-body">
                 <br>
-                <div class="collapse" id="highlight1">
-                    The query used to insert a new sighting into the Sighting table is:
+                <p>The query used to insert a new sighting into the Sighting table is:</p>
                     <pre><code>
 INSERT INTO Sighting
 VALUES (80100, 2019-04-01 21:00, 60, 1 minute, 30.2672, -97.7431);
                     </code></pre>
-                </div>
-
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight1">Show Query</button>
-
             </div>
         </div>
     </div>
@@ -185,17 +180,12 @@ VALUES (80100, 2019-04-01 21:00, 60, 1 minute, 30.2672, -97.7431);
             <div class="panel-heading">Update Sighting Description Query</div>
             <div class="panel-body">
                 <br>
-                <div class="collapse" id="highlight2">
-                    The query used to update the description values for SID=80100 in the Description table is:
+                <p>The query used to update the description values for SID=80100 in the Description table is:</p>
                     <pre><code>
 UPDATE Description
 SET Shape='star', Sighting_description='object looked like a shooting star crossing the sky'
 WHERE SID=80100;
                     </code></pre>
-                </div>
-
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight2">Show Query</button>
-
             </div>
         </div>
     </div>
@@ -205,17 +195,12 @@ WHERE SID=80100;
             <div class="panel-heading">Update Sighting Location Query</div>
             <div class="panel-body">
                 <br>
-                <div class="collapse" id="highlight3">
-                    The query used to update the location values for SID=80100 from the Location table is:
+                <p>The query used to update the location values for SID=80100 from the Location table is:</p>
                     <pre><code>
 UPDATE Location
 SET latitude=30.2672, longitude=-97.7431, City='Austin', State='TX', Country='us'
 WHERE SID=80100;
                     </code></pre>
-                </div>
-
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight3">Show Query</button>
-
             </div>
         </div>
     </div>
@@ -225,16 +210,11 @@ WHERE SID=80100;
             <div class="panel-heading">Delete Sighting Query</div>
             <div class="panel-body">
                 <br>
-                <div class="collapse" id="highlight4">
-                    The query used to delete the sighting with SID=80100 from the Sighting table is:
+                <p>The query used to delete the sighting with SID=80100 from the Sighting table is:</p>
                     <pre><code>
 DELETE FROM Sighting
 WHERE SID=80100;
                     </code></pre>
-                </div>
-
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight4">Show Query</button>
-
             </div>
         </div>
     </div>
@@ -244,15 +224,10 @@ WHERE SID=80100;
             <div class="panel-heading">Placeholder Query</div>
             <div class="panel-body">
                 <br>
-                <div class="collapse" id="highlight5">
-                    The query used to look up something:
+                <p>The query used to look up something:</p>
                     <pre><code>
 QUERY HERE
                     </code></pre>
-                </div>
-
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#highlight5">Show Query</button>
-
             </div>
         </div>
     </div>
