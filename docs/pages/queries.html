@@ -191,6 +191,23 @@ WHERE SID=80100;
         </div>
     </div>
 
+    <div class="container" id="p6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Create WeightedCoords View</div>
+            <div class="panel-body">
+                <br>
+                <p>The query used to create the WeightedCoords View:</p>
+                <pre><code>
+CREATE VIEW WeightedCoords AS
+SELECT s.latitude,s.longitude,count(s.latitude)
+FROM sighting s, location l
+WHERE l.country='US' AND s.latitude = l.Latitude AND s.longitude = l.Longitude
+GROUP BY s.latitude,s.longitude;
+                    </code></pre>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="p3">
         <div class="panel panel-default">
             <div class="panel-heading">Update Sighting Location Query</div>
