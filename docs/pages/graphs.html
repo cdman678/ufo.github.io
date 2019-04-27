@@ -164,6 +164,7 @@
                 <br>
 
                 <div class="collapse" id="highlight1">
+                    The query used to generate the top 5 states:
                     <pre><code>
 SELECT state,count(state)
 FROM location l, sighting s
@@ -173,7 +174,7 @@ ORDER BY count(state) DESC
 LIMIT 5
 
 /*MYSQL specific way of exporting a query to a CSV file*/
-INTO OUTFILE '/var/lib/mysql-files/Top5States.csv'
+INTO OUTFILE '/var/lib/mysql-files/top5states.csv'
 FIELDS ENCLOSED BY ''
 TERMINATED BY ';'
 ESCAPED BY '"'
@@ -198,6 +199,7 @@ LINES TERMINATED BY '\r\n';
                 <br>
 
                 <div class="collapse" id="highlight2">
+                    The query used to generate the top 5 cities:
                     <pre><code>
 SELECT city,state,count(city)
 FROM location l, sighting s
@@ -207,7 +209,7 @@ ORDER BY count(city) DESC
 LIMIT 5
 
 /*MYSQL specific way of exporting a query to a CSV file*/
-INTO OUTFILE '/var/lib/mysql-files/Top5Cities.csv'
+INTO OUTFILE '/var/lib/mysql-files/top5cities.csv'
 FIELDS ENCLOSED BY ''
 TERMINATED BY ';'
 ESCAPED BY '"'
@@ -233,6 +235,7 @@ LINES TERMINATED BY '\r\n';
                 <br>
 
                 <div class="collapse" id="highlight3">
+                    The query used to generate the top 5 non US countries:
                     <pre><code>
 SELECT country, count(country)
 FROM sighting s , location l
@@ -267,6 +270,7 @@ LINES TERMINATED BY '\r\n';
 
                 <br>
                 <div class="collapse" id="highlight4">
+                    The query used to generate the top 5 object shapes:
                     <pre><code>
 SELECT shape, count(shape)
 FROM description
@@ -300,7 +304,7 @@ LINES TERMINATED BY '\r\n';
     /**
      * This fetches the CSV file and shows the Bar chart
      */
-    var csv = new RGraph.CSV('../data/Top5States.csv', function (csv)
+    var csv = new RGraph.CSV('../data/top5states.csv', function (csv)
     {
         // Get the first column which becomes the labels
         var labels  = csv.getCol(0),
@@ -333,7 +337,7 @@ LINES TERMINATED BY '\r\n';
     /**
      * This fetches the CSV file and shows the Bar chart
      */
-    var csv = new RGraph.CSV('../data/Top5Cities.csv', function (csv)
+    var csv = new RGraph.CSV('../data/top5cities.csv', function (csv)
     {
         // Get the first column which becomes the labels
         var labels  = csv.getCol(0),
