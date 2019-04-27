@@ -165,21 +165,6 @@ VALUES (80100, 2019-04-01 21:00, 60, 1 minute, 30.2672, -97.7431);
 
     <div class="container" id="p2">
         <div class="panel panel-default">
-            <div class="panel-heading">Update Sighting Description Query</div>
-            <div class="panel-body">
-                <br>
-                <p>The query used to update the description values for SID=80100 in the Description table is:</p>
-                    <pre><code>
-UPDATE Description
-SET Shape='star', Sighting_description='object looked like a shooting star crossing the sky'
-WHERE SID=80100;
-                    </code></pre>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" id="p6">
-        <div class="panel panel-default">
             <div class="panel-heading">Create WeightedCoords View</div>
             <div class="panel-body">
                 <br>
@@ -197,15 +182,117 @@ GROUP BY s.latitude,s.longitude;
 
     <div class="container" id="p3">
         <div class="panel panel-default">
-            <div class="panel-heading">Update Sighting Location Query</div>
+            <div class="panel-heading">Update Sighting latitude/longitude Query</div>
             <div class="panel-body">
                 <br>
-                <p>The query used to update the location values for SID=80100 from the Location table is:</p>
-                    <pre><code>
-UPDATE Location
-SET latitude=30.2672, longitude=-97.7431, City='Austin', State='TX', Country='us'
-WHERE SID=80100;
+                <p>The query used to update the Latitude and Longitude values in the origin table:</p>
+
+                    <pre><code class="sql">
+UPDATE origcsv
+SET sighting_city = %s, sighting_state = %s, sighting_country = %s
+WHERE sighting_id = %s;
                     </code></pre>
+                <div class="collapse" id="python">
+                   <pre><code>
+import reverse_geocoder as rg
+import mysql.connector as mysql
+
+us_state_abbrev = {
+    'Alabama': 'AL',
+    'Alaska': 'AK',
+    'Arizona': 'AZ',
+    'Arkansas': 'AR',
+    'California': 'CA',
+    'Colorado': 'CO',
+    'Connecticut': 'CT',
+    'Delaware': 'DE',
+    'Florida': 'FL',
+    'Georgia': 'GA',
+    'Hawaii': 'HI',
+    'Idaho': 'ID',
+    'Illinois': 'IL',
+    'Indiana': 'IN',
+    'Iowa': 'IA',
+    'Kansas': 'KS',
+    'Kentucky': 'KY',
+    'Louisiana': 'LA',
+    'Maine': 'ME',
+    'Maryland': 'MD',
+    'Massachusetts': 'MA',
+    'Michigan': 'MI',
+    'Minnesota': 'MN',
+    'Mississippi': 'MS',
+    'Missouri': 'MO',
+    'Montana': 'MT',
+    'Nebraska': 'NE',
+    'Nevada': 'NV',
+    'New Hampshire': 'NH',
+    'New Jersey': 'NJ',
+    'New Mexico': 'NM',
+    'New York': 'NY',
+    'North Carolina': 'NC',
+    'North Dakota': 'ND',
+    'Ohio': 'OH',
+    'Oklahoma': 'OK',
+    'Oregon': 'OR',
+    'Pennsylvania': 'PA',
+    'Rhode Island': 'RI',
+    'South Carolina': 'SC',
+    'South Dakota': 'SD',
+    'Tennessee': 'TN',
+    'Texas': 'TX',
+    'Utah': 'UT',
+    'Vermont': 'VT',
+    'Virginia': 'VA',
+    'Washington': 'WA',
+    'West Virginia': 'WV',
+    'Wisconsin': 'WI',
+    'Wyoming': 'WY',
+}
+
+database = mysql.connect(user='root',
+                         password='cornisgood',
+                         host='192.168.1.11',
+                         database='ufo_sightings')
+
+cursor = database.cursor()
+
+cursor.execute('SELECT * FROM origcsv')
+results = cursor.fetchall()
+
+sqlupdateUS = '''UPDATE origcsv SET sighting_city = %s, sighting_state = %s, sighting_country = %s WHERE sighting_id = %s'''
+sqlupdateNONUS = '''UPDATE origcsv SET sighting_city = %s,sighting_state = '', sighting_country = %s WHERE sighting_id = %s'''
+
+count = 0
+for result in results:
+    locationdata = rg.get(result[9:],mode=1)
+    if locationdata['cc'] == 'US':
+        data = (
+            locationdata['name'],
+            us_state_abbrev.get(locationdata['admin1']),
+            locationdata['cc'],
+            result[0])
+        cursor.execute(sqlupdateUS,data)
+        database.commit()
+        print(count)
+        count += 1
+    else:
+        data = (
+            locationdata['name'],
+            locationdata['cc'],
+            result[0]
+        )
+        cursor.execute(sqlupdateNONUS, data)
+        database.commit()
+        print(count)
+        count += 1
+
+print(count)
+
+                   </code></pre>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#python">Show Python Code</button>
             </div>
         </div>
     </div>
@@ -226,11 +313,59 @@ WHERE SID=80100;
 
     <div class="container" id="p5">
         <div class="panel panel-default">
-            <div class="panel-heading">Placeholder Query</div>
+            <div class="panel-heading">Index</div>
             <div class="panel-body">
                 <br>
                 <p>The query used to look up something:</p>
                     <pre><code>
+QUERY HERE
+                    </code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="p6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Make sighting table</div>
+            <div class="panel-body">
+                <br>
+                <p>The query used to look up something:</p>
+                <pre><code>
+QUERY HERE
+                    </code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="p7">
+        <div class="panel panel-default">
+            <div class="panel-heading">Make Location table</div>
+            <div class="panel-body">
+                <br>
+                <p>The query used to look up something:</p>
+                <pre><code>
+QUERY HERE
+                    </code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="p8">
+        <div class="panel panel-default">
+            <div class="panel-heading">Make description table</div>
+            <div class="panel-body">
+                <br>
+                <p>The query used to look up something:</p>
+                <pre><code>
+QUERY HERE
+                    </code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="p9">
+        <div class="panel panel-default">
+            <div class="panel-heading">Make origin table</div>
+            <div class="panel-body">
+                <br>
+                <p>The query used to look up something:</p>
+                <pre><code>
 QUERY HERE
                     </code></pre>
             </div>
