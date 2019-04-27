@@ -164,7 +164,7 @@
                 <br>
 
                 <div class="collapse" id="highlight1">
-                    The query used to generate the top 5 states:
+                    <p> The query used to generate the top 5 states:</p>
                     <pre><code>
 SELECT state,count(state)
 FROM location l, sighting s
@@ -199,7 +199,7 @@ LINES TERMINATED BY '\r\n';
                 <br>
 
                 <div class="collapse" id="highlight2">
-                    The query used to generate the top 5 cities:
+                    <p> The query used to generate the top 5 cities: </p>
                     <pre><code>
 SELECT city,state,count(city)
 FROM location l, sighting s
@@ -235,7 +235,7 @@ LINES TERMINATED BY '\r\n';
                 <br>
 
                 <div class="collapse" id="highlight3">
-                    The query used to generate the top 5 non US countries:
+                    <p> The query used to generate the top 5 non US countries:</p>
                     <pre><code>
 SELECT country, count(country)
 FROM sighting s , location l
@@ -270,7 +270,7 @@ LINES TERMINATED BY '\r\n';
 
                 <br>
                 <div class="collapse" id="highlight4">
-                    The query used to generate the top 5 object shapes:
+                   <p> The query used to generate the top 5 object shapes: </p>
                     <pre><code>
 SELECT shape, count(shape)
 FROM description
