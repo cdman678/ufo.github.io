@@ -177,6 +177,13 @@
                     <pre><code>
 SELECT shape
 FROM description;
+
+/*MYSQL specific way of exporting a query to a text file*/
+INTO OUTFILE '/var/lib/mysql-files/shapes.txt'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
                 </div>
 
@@ -198,6 +205,13 @@ FROM description;
                     <pre><code>
 SELECT description
 FROM description;
+
+/*MYSQL specific way of exporting a query to a text file*/
+INTO OUTFILE '/var/lib/mysql-files/descriptions.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
                 </div>
 
