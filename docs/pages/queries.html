@@ -344,6 +344,25 @@ CREATE TABLE `sighting` (
             </div>
         </div>
     </div>
+
+    <div class="container" id="p10">
+        <div class="panel panel-default">
+            <div class="panel-heading">Create a Trigger</div>
+            <div class="panel-body">
+                <br>
+                <p>The Trigger used to populate the description table using the MYSQL format:</p>
+                <pre><code>
+CREATE DEFINER=`root`@`%` TRIGGER `ufo_sightings`.`sighting_AFTER_INSERT`
+AFTER INSERT ON `sighting`
+FOR EACH ROW
+Begin
+INSERT INTO description values (New.sid,NULL,NULL);
+End
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="p7">
         <div class="panel panel-default">
             <div class="panel-heading">Make Location table</div>
