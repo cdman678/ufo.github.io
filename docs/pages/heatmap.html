@@ -161,16 +161,26 @@
             <p><a class="btn btn-primary" href="viewmap.html">View Map</a> <br> </p>
 
             <div class="collapse" id="highlight1">
+                The WeightedCoords View was called in order to generate the CSV file used in the Heat Map:
                     <pre><code>
+
 CREATE VIEW WeightedCoords AS
 SELECT s.latitude,s.longitude,count(s.latitude)
 FROM sighting s, location l
 WHERE l.country='US' AND s.latitude = l.Latitude AND s.longitude = l.Longitude
 GROUP BY s.latitude,s.longitude;
 
+
 /*When getting the of coordinates and their weights we then use:*/
 SELECT *
-FROM WeightedCoords;
+FROM WeightedCoords
+
+/*MYSQL specific way of exporting a query to a CSV file*/
+INTO OUTFILE '/var/lib/mysql-files/condensedcontlat.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
             </div>
 
