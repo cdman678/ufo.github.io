@@ -83,21 +83,16 @@
         .image2{
             z-index: -5;
             position: relative;
-            top:200px;
+            top:250px;
             left: 0;
-        }
-
-        .image3{
-            z-index: -5;
-            position: absolute;
-            top: 70%;
-            left: 55%;
         }
 
         .panel{
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
-
+        .panel-heading{
+            font-size: 30px
+        }
         #p1 {
             z-index: 1;
             position: absolute;
@@ -107,26 +102,8 @@
             left: 20%;
         }
 
-        #p2 {
-            z-index: 1;
-            position: absolute;
-            width: 60%;
-            height: 80%;
-            top: 65%;
-            left: 20%;
-        }
+</style>
 
-        #p3 {
-            z-index: 1;
-            position: absolute;
-            width: 60%;
-            height: 80%;
-            top: 95%;
-            left: 20%;
-        }
-
-
-    </style>
 </head>
 
 <div class="flex">
@@ -142,10 +119,6 @@
 
 <div class="image2">
     <img src="pics/alien-clipart-13.png" alt="alien" height="450" width="300" >
-</div>
-
-<div class="image3">
-    <img src="pics/rocket-clipart-black-and-white-39.png" alt="alien" height="515" width="540" >
 </div>
 
 <!-- Navigation Bar -->
@@ -198,52 +171,41 @@
 
 <div class="flex">
 
-<div>
-<div class="container" id="p1">
-    <div class="panel panel-default">
-        <div class="panel-heading">Objectives</div>
-        <div class="panel-body">
-            <li>Clean the dataset, removing all irrelevant attributes and fixing the location attributes <br></li>
-            <li>Create a MySQL database from the UFO sightings repository <br></li>
-            <li>Break the dataset into a normalized form <br></li>
-            <li>Run analysis on the dataset <br></li>
-            <li>Create Heatmap with the given locations<br></li>
-            <li>Create Graphs to represent the results of our queries<br></li>
-            <li>Create Word Clouds for UFO descriptions and shapes</li>
+    <div class="container" id="p1">
+        <div class="panel panel-default">
+            <div style="height: 60px;padding-left: 20px; padding-bottom: 15px" class="panel-heading">Overview</div>
+            <div class="panel-body">
+                <h4><b>Objectives</b></h4>
+                 <ul>
+                     <li>Clean the dataset, removing all irrelevant attributes and fixing the location attributes <br></li>
+                     <li>Create a MySQL database from the UFO sightings repository <br></li>
+                     <li>Break the dataset into a normalized form <br></li>
+                     <li>Run analysis on the dataset <br></li>
+                     <li>Create Heatmap with the given locations<br></li>
+                     <li>Create Graphs to represent the results of our queries<br></li>
+                     <li>Create Word Clouds for UFO descriptions and shapes</li>
+                </ul>
+                <h4><b>Dataset</b></h4>
+                <ul>
+                    <li>The original dataset is from the National UFO Reporting Center and can be found <a href="http://www.nuforc.org/webreports.html">here</a> <br> </li>
+                    <li>The scrubbed dataset that we're using can be found <a href="https://github.com/planetsig/ufo-reports">here</a> <br></li>
+                    <li>We have removed the attribute that listed the date each sighting was uploaded considering it's irrelevant to the study<br></li>
+                    <li>We cross referenced the latitude and longitude for each data entry and updated the correct city, state, and country</li>
+                </ul>
+                <h4><b>Tools</b></h4>
+                <ul>
+                    <li>Python - Used a Python library to go through each coordinate in the data set and return the correct city, state, and country <br> </li>
+                    <li>MySQL - Used to manipulate data from our dataset as well as to run queries</li>
+                    <li>MySQL Server - Dedicated server running MySQL Server to store the dataset<br></li>
+                    <li>HTML/Bootstrap - This website was created using HTML in addition to Bootstrap<br></li>
+                    <li>JavaScript - Connecting to the Google Map API, creating the graphs, making word clouds and other website functions<br></li>
+                </ul>
+            </div>
         </div>
     </div>
+
 </div>
 
-
-
-<div class="container" id="p2">
-    <div class="panel panel-default">
-        <div class="panel-heading">Dataset</div>
-        <div class="panel-body">
-            <li>The original dataset is from the National UFO Reporting Center and can be found <a href="http://www.nuforc.org/webreports.html">here</a> <br> </li>
-            <li>The scrubbed dataset that we're using can be found <a href="https://github.com/planetsig/ufo-reports">here</a> <br></li>
-            <li>We have removed the attribute that listed the date each sighting was uploaded considering it's irrelevant to the study<br></li>
-            <li>We cross referenced the latitude and longitude for each data entry and updated the correct city, state, and country</li>
-
-        </div>
-    </div>
-</div>
-
-<div class="container" id="p3">
-    <div class="panel panel-default">
-        <div class="panel-heading">Tools</div>
-        <div class="panel-body">
-            <li>Python - Used a Python library to go through each coordinate in the data set and return the correct city, state, and country <br> </li>
-            <li>MySQL - Used to manipulate data from our dataset as well as to run queries</li>
-            <li>MySQL Server - Dedicated server running MySQL Server to store the dataset<br></li>
-            <li>HTML/Bootstrap - This website was created using HTML in addition to Bootstrap<br></li>
-            <li>JavaScript - Connecting to the Google Map API, creating the graphs, making word clouds and other website functions<br></li>
-
-        </div>
-    </div>
-</div>
-</div>
-</div>
 </body>
 
 
