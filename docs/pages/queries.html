@@ -318,7 +318,8 @@ WHERE SID=80100;
                 <br>
                 <p>The query used to look up something:</p>
                     <pre><code>
-QUERY HERE
+CREATE INDEX locations
+ON locations (Longitude,Latitude,City);
                     </code></pre>
             </div>
         </div>
@@ -328,9 +329,17 @@ QUERY HERE
             <div class="panel-heading">Make sighting table</div>
             <div class="panel-body">
                 <br>
-                <p>The query used to look up something:</p>
+                <p>The query used create the sighting table:</p>
                 <pre><code>
-QUERY HERE
+CREATE TABLE `sighting` (
+  `sid` int(11) NOT NULL,
+  `timestamp` datetime DEFAULT NULL,
+  `seconds` int(11) DEFAULT NULL,
+  `time_description` varchar(50) DEFAULT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  PRIMARY KEY (`sid`)
+)
                     </code></pre>
             </div>
         </div>
@@ -340,9 +349,16 @@ QUERY HERE
             <div class="panel-heading">Make Location table</div>
             <div class="panel-body">
                 <br>
-                <p>The query used to look up something:</p>
+                <p>The query used to create the location table:</p>
                 <pre><code>
-QUERY HERE
+CREATE TABLE `location` (
+  `Latitude` float NOT NULL,
+  `Longitude` float NOT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` char(2) DEFAULT NULL,
+  `country` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`Latitude`,`Longitude`)
+)
                     </code></pre>
             </div>
         </div>
@@ -352,9 +368,15 @@ QUERY HERE
             <div class="panel-heading">Make description table</div>
             <div class="panel-body">
                 <br>
-                <p>The query used to look up something:</p>
+                <p>The query used to create the description table:</p>
                 <pre><code>
-QUERY HERE
+CREATE TABLE `description` (
+  `sid` int(11) NOT NULL,
+  `shape` varchar(30) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY (`sid`),
+  CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `sighting` (`sid`) ON DELETE CASCADE ON UPDATE CASCADE
+)
                     </code></pre>
             </div>
         </div>
@@ -364,9 +386,22 @@ QUERY HERE
             <div class="panel-heading">Make origin table</div>
             <div class="panel-body">
                 <br>
-                <p>The query used to look up something:</p>
+                <p>The query used to create the 1NF of our data:</p>
                 <pre><code>
-QUERY HERE
+CREATE TABLE `origcsv` (
+  `sighting_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sighting_date` datetime NOT NULL,
+  `sighting_city` varchar(50) NOT NULL,
+  `sighting_state` char(2) DEFAULT NULL,
+  `sighting_country` varchar(5) DEFAULT NULL,
+  `sighting_shape` varchar(30) NOT NULL,
+  `sighting_second` int(11) NOT NULL,
+  `sighting_alt` varchar(50) DEFAULT NULL,
+  `sighting_description` text,
+  `sighting_latitude` float NOT NULL,
+  `sighting_longitude` float NOT NULL,
+  PRIMARY KEY (`sighting_id`)
+)
                     </code></pre>
             </div>
         </div>
