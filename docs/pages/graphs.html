@@ -170,7 +170,14 @@ FROM location l, sighting s
 WHERE s.longitude = l.Longitude AND s.latitude=l.Latitude AND l.country ='US' AND l.state !=''
 GROUP BY state
 ORDER BY count(state) DESC
-LIMIT 5;
+LIMIT 5
+
+/*MYSQL specific way of exporting a query to a CSV file*/
+INTO OUTFILE '/var/lib/mysql-files/Top5States.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
                 </div>
 
@@ -197,7 +204,14 @@ FROM location l, sighting s
 WHERE s.longitude = l.Longitude AND s.latitude=l.Latitude AND l.country ='US'
 GROUP BY city
 ORDER BY count(city) DESC
-LIMIT 5;
+LIMIT 5
+
+/*MYSQL specific way of exporting a query to a CSV file*/
+INTO OUTFILE '/var/lib/mysql-files/Top5Cities.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
                 </div>
 
@@ -225,7 +239,14 @@ FROM sighting s , location l
 WHERE l.Latitude = s.latitude and l.Longitude = s.longitude and country!='US'
 GROUP BY country
 ORDER BY count(country) DESC
-LIMIT 5;
+LIMIT 5
+
+/*MYSQL specific way of exporting a query to a CSV file*/
+INTO OUTFILE '/var/lib/mysql-files/top5nonus.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
                 </div>
 
@@ -251,7 +272,14 @@ SELECT shape, count(shape)
 FROM description
 GROUP BY shape
 ORDER BY count(shape) DESC
-LIMIT 5;
+LIMIT 5
+
+/*MYSQL specific way of exporting a query to a CSV file*/
+INTO OUTFILE '/var/lib/mysql-files/top5shapes.csv'
+FIELDS ENCLOSED BY ''
+TERMINATED BY ';'
+ESCAPED BY '"'
+LINES TERMINATED BY '\r\n';
                     </code></pre>
                 </div>
 
