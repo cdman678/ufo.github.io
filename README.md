@@ -1,7 +1,7 @@
 # ufo.github.io
 UFO sightings throughout the world
 
-<h1><b>Overview</b></h1>
+<h2><b>Overview</b></h2>
 
 <h4><b>Objectives</b></h4>
  <ul>
@@ -29,7 +29,7 @@ UFO sightings throughout the world
     <li>JavaScript - Connecting to the Google Map API, creating the graphs, making word clouds and other website functions<br></li>
 </ul>
 
-<h1><b>Proposal</b></h1>
+<h2><b>Proposal</b></h2>
 
 <div class="panel-body">
     <h4><b>Introduction</b></h4>
