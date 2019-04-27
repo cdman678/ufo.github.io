@@ -1,14 +1,15 @@
 # ufo.github.io
 UFO sightings throughout the world
 
-Objectives:
-  <li>Clean the dataset, removing all irrelevant attributes and fixing the location attributes <br></li>
-  <li>Create a MySQL database from the UFO sightings repository <br></li>
-  <li>Break the dataset into a normalized form <br></li>
-  <li>Run analysis on the dataset <br></li>
-  <li>Create Heatmap with the given locations<br></li>
-  <li>Create Graphs to represent the results of our queries<br></li>
-  <li>Create Word Clouds for UFO descriptions and shapes</li>
+                <h4><b>Objectives</b></h4>
+                 <ul>
+                     <li>Clean the dataset, removing all irrelevant attributes and fixing the location attributes <br></li>
+                     <li>Create a MySQL database from the UFO sightings repository <br></li>
+                     <li>Break the dataset into a normalized form <br></li>
+                     <li>Run analysis on the dataset <br></li>
+                     <li>Create Heatmap with the given locations<br></li>
+                     <li>Create Graphs to represent the results of our queries<br></li>
+                     <li>Create Word Clouds for UFO descriptions and shapes</li>
                 </ul>
                 <h4><b>Dataset</b></h4>
                 <ul>
